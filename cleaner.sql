@@ -927,3 +927,30 @@ INSERT INTO pago VALUES (28,'PayPal','ak-std-000022','2009-01-13',8489);
 INSERT INTO pago VALUES (30,'PayPal','ak-std-000024','2009-01-16',7863);
 INSERT INTO pago VALUES (35,'PayPal','ak-std-000025','2007-10-06',3321);
 INSERT INTO pago VALUES (38,'PayPal','ak-std-000026','2006-05-26',1171);
+
+/*sentencias*/
+DESCRIBE EMPLEADO;
+SELECT codigo_empleado, nombre, apellido1, apellido2,
+extension, email, codigo_oficina, codigo_jefe
+puesto FROM EMPLEADO;
+
+DESCRIBE oficina;
+select o.codigo_oficina as cod_oficina, o.ciudad country,
+concat(o.codigo_oficina,' - ',o.ciudad) as cod_ciudad_oficina 
+from oficina o;
+
+select ciudad, telefono, pais from oficina 
+where upper(pais)='España';
+
+
+describe cliente;
+describe empleado;
+
+select cl.ciudad, em.codigo_empleado from cliente cl
+join empleado em 
+on em.codigo_empleado= cl.codigo_empleado_rep_ventas
+where upper(cl.ciudad) = 'Madrid'
+and em.codigo_empleado = 30
+or em.codigo_empleado = 11;
+
+select codigo from empleado;
